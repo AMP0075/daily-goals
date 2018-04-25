@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#263238</color>
     <color name="colorPrimaryDark">#000a12</color>
-    <color name="error">#ff0000</color>
     <color name="colorAccent">#1CA0F3</color>
+    <color name="error">#ff0000</color>
+    <color name="orange_background">#FF9100</color>
+    <color name="red_background">#FF1744</color>
+    <color name="blue_background">#2979FF</color>
+    <color name="grey_background">#757575</color>
 </resources>
