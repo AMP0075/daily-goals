@@ -7,10 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.stephentuso.welcome.WelcomeHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button button_login;
     EditText etname, etpass;
+    private WelcomeHelper welcomeScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,9 @@ public class LoginActivity extends AppCompatActivity {
 
         etname = (EditText) findViewById(R.id.etname);
         etpass = (EditText) findViewById(R.id.etpass);
+
+        welcomeScreen = new WelcomeHelper(this, WelcomeScreenActivity.class);
+        welcomeScreen.show(savedInstanceState);
     }
 
     public void onLogin(View v)
@@ -37,4 +44,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        welcomeScreen.onSaveInstanceState(outState);
+    }
 }
