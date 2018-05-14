@@ -141,30 +141,38 @@
             android:orientation="vertical">
 
             <CheckBox
-                android:id = "@+id/MK"
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
-                android:text = "Make it a habit :"
-                android:fontFamily="sans-serif-smallcaps"
-                android:textSize="16sp"
+                android:id="@+id/MK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Make it a habit :"
+                android:textSize="16sp" />
 
-            <CheckBox
+            <Switch
+                android:id="@+id/sw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Daily     "
+                android:textSize="15sp" />
+            <!--            <CheckBox
                 android:id = "@+id/daily"
                 android:layout_width = "wrap_content"
                 android:layout_height = "wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text = "Daily "
-                android:textSize="15sp" />
+                android:textSize="15sp" />-->
 
             <CalendarView
-                android:id = "@+id/simpleCalendarView"
-                android:layout_width = "fill_parent"
-                android:layout_height = "fill_parent"
+                android:id="@+id/simpleCalendarView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:layout_marginTop="10dp"
-                android:firstDayOfWeek = "2"/>
+                android:firstDayOfWeek="2" />
 
         </LinearLayout>
 

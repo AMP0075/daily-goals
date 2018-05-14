@@ -7,14 +7,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -41,6 +45,7 @@ public class TodayActivity extends AppCompatActivity implements AdapterView.OnIt
     private int minutes;
     private DatabaseReference mDatabase;
     CalendarView simpleCalendarView;
+    Switch sw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +62,16 @@ public class TodayActivity extends AppCompatActivity implements AdapterView.OnIt
         // initiate a check box
         simpleCheckBox = (CheckBox) findViewById(R.id.simpleCheckBox);
         reminder = findViewById(R.id.reminder);
-        daily = findViewById(R.id.daily);
+        //daily = findViewById(R.id.daily);
         MK = findViewById(R.id.MK);
         notify = findViewById(R.id.notify);
 
         spin = (Spinner) findViewById(R.id.simple_spinner);
         spin.setOnItemSelectedListener(TodayActivity.this);
+        sw=(Switch)findViewById(R.id.sw);
+
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 //Creating the ArrayAdapter instance having the name list
 
@@ -94,6 +103,16 @@ public class TodayActivity extends AppCompatActivity implements AdapterView.OnIt
 // display a toast with changed values of time picker
                 Toast.makeText(getApplicationContext(), hourOfDay + " " + minute, Toast.LENGTH_SHORT).show();
                 //   time.setText("Time is :: " + hourOfDay + " : " + minute); // set the current time in text view
+            }
+        });
+
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true)
+                {
+                    Toast.makeText(TodayActivity.this, "Daily goal set!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -149,4 +168,22 @@ public class TodayActivity extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //finish();
+
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
 }
